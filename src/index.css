@@ -1,13 +1,80 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: "Karla", sans-serif;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+.logo{
+  width: 65px;
+  margin-top: 5px;
+  margin-left: 30px;
+}
+.nav-items{
+  padding: 0px 20px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+
+}
+.nav-items >ul {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  font-size: 16px;
+  list-style-type: none;
+}
+.nav-items >ul >li{
+  padding: 10px;
+  margin: 10px;
+}
+
+.res-contianer{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 90px;
+}
+
+.res-card{
+  width: 250px;
+  background-color: #F0F0F0;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+/* to prevent overflowing of words  */
+
+/* there should be no space between re-card ans :hover other wise code breaks  */
+.res-card:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
+}
+
+.res-card >h3{
+  padding: 0;
+  margin: 5px;
+  font-size: medium;
+}
+.res-card >h4{
+  padding: 0;
+  margin: 5px;
+  font-size: small;
+}
+
+
+.search{
+  padding: 10px;
+}
+
+.res-logo{
+  width: 100%;
+  height: 25vw;
+  object-fit: cover;
 }
