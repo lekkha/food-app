@@ -1,52 +1,65 @@
 import RestrauntCard from "./RestrauntCard";
-// import resList from "../utils/mockData";
+import resList from "../utils/mockData";
+import { useState } from "react";
 
 const Body = () => {
 
-  const listOfRes = [
-    {
-    data: {
-      id: "74453",
-      name: "Domino's Pizza",
-      cloudinaryImageId: "bz9zkh2aqywjhpankb07",
-      cuisines: ["Pizzas"],
-      tags: [],
-      costForTwo: 40000,
-      deliveryTime: 45,
+  const[listOfRes, setListOfRes] = useState(resList);
 
-    },
-  },
-  {
-    data: {
-      id: "74454",
-      name: "Domino's",
-      cloudinaryImageId: "bz9zkh2aqywjhpankb07",
-      cuisines: ["Pizzas"],
-      tags: [],
-      costForTwo: 40000,
-      deliveryTime: 45,
+  // let listOfRes = [
+  //   {
+  //   data: {
+  //     id: "74453",
+  //     name: "Domino's Pizza",
+  //     cloudinaryImageId: "bz9zkh2aqywjhpankb07",
+  //     cuisines: ["Pizzas"],
+  //     tags: [],
+  //     costForTwo: 40000,
+  //     deliveryTime: 45,
+  //     avgRating : 4.0,
 
-    },
-  },
-  {
-    data: {
-      id: "74455",
-      name: "Domi",
-      cloudinaryImageId: "bz9zkh2aqywjhpankb07",
-      cuisines: ["Pizzas"],
-      tags: [],
-      costForTwo: 40000,
-      deliveryTime: 45,
+  //   },
+  // },
+  // {
+  //   data: {
+  //     id: "74454",
+  //     name: "Domino's",
+  //     cloudinaryImageId: "bz9zkh2aqywjhpankb07",
+  //     cuisines: ["Pizzas"],
+  //     tags: [],
+  //     costForTwo: 40000,
+  //     deliveryTime: 45,
+  //     avgRating : 3.0,
+      
 
-    },
-  },
-  ]; 
+  //   },
+  // },
+  // {
+  //   data: {
+  //     id: "74455",
+  //     name: "Domi",
+  //     cloudinaryImageId: "bz9zkh2aqywjhpankb07",
+  //     cuisines: ["Pizzas"],
+  //     tags: [],
+  //     costForTwo: 40000,
+  //     deliveryTime: 45,
+  //     avgRating : 4.5,
+
+  //   },
+  // },
+  // ]; 
 
 
     return (
       <div className="body">
         <div className="filter">
-          <button className="filter-btn">Top Rated Restraunts</button>
+          <button 
+          className="filter-btn"
+          onClick={() => {
+            const filteredList = listOfRes.filter((res) => res.data.avgRating>4.0);
+            setListOfRes(filteredList);
+          }}
+          >Top Rated Restraunts</button>
         </div>
         <div className="res-contianer">
           {/* since resList is an arrya  */}
