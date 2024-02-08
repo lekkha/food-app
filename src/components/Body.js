@@ -1,30 +1,36 @@
 import RestrauntCard from "./RestrauntCard";
-import resList from "../utils/mockData";
+import Shimmer from "./Shimmer";
+
 import { useState, useEffect } from "react";
 
 const Body = () => {
 
-  const[listOfRes, setListOfRes] = useState(resList);
+  const[listOfRes, setListOfRes] = useState([]);
 
   useEffect(() => {
     fetchData(); 
   }, []); 
 
   const fetchData = async () => {
-    const data = await fetch('https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING');
+    const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.65420&lng=77.23730&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
     const json =  await data.json();
     console.log("apiData",json); 
-    setListOfRes(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+    setListOfRes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }; 
-  console.log("resList", resList); 
+  // console.log("resList", resList); 
 
-    return (
+  //conditional rendering 
+  // if(listOfRes.length === 0){
+  //   return <Shimmer />
+  // }
+
+    return (listOfRes.length ===0) ? <Shimmer /> : (
       <div className="body">
         <div className="filter">
           <button 
           className="filter-btn"
           onClick={() => {
-            const filteredList = listOfRes.filter((res) => res.data.avgRating>4.0);
+            const filteredList = listOfRes.filter((res) => res.info.avgRating>4.0);
             setListOfRes(filteredList);
           }}
           >Top Rated Restraunts</button>
