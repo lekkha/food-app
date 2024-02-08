@@ -1,9 +1,9 @@
 import {CDN_URL} from '../utils/constants';
 
 const RestrauntCard = (props) => {
-    const { resData } = props;
+    const { resList } = props;
   
-    const {cloudinaryImageId, name, cuisines, avgRating, costForTwo, deliveryTime } = resData?.data;
+    const {cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } = resList?.info;
     return (
       <div className="res-card">
         <img
@@ -17,8 +17,8 @@ const RestrauntCard = (props) => {
         {/* JavaScript prop-> for since cusine is passed as an array for comma seperator between elems use .join(", ") */}
         <h4>{cuisines.join(", ")}</h4>
         <h4>{avgRating} stars</h4>
-        <h4>Rs.{costForTwo / 100} FOR TWO</h4>
-        <h4>{deliveryTime} minutes</h4>
+        <h4>{costForTwo}</h4>
+        <h4>{sla?.deliveryTime ?? '20'} minutes</h4>
       </div>
     );
   };

@@ -1,54 +1,22 @@
 import RestrauntCard from "./RestrauntCard";
 import resList from "../utils/mockData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Body = () => {
 
   const[listOfRes, setListOfRes] = useState(resList);
 
-  // let listOfRes = [
-  //   {
-  //   data: {
-  //     id: "74453",
-  //     name: "Domino's Pizza",
-  //     cloudinaryImageId: "bz9zkh2aqywjhpankb07",
-  //     cuisines: ["Pizzas"],
-  //     tags: [],
-  //     costForTwo: 40000,
-  //     deliveryTime: 45,
-  //     avgRating : 4.0,
+  useEffect(() => {
+    fetchData(); 
+  }, []); 
 
-  //   },
-  // },
-  // {
-  //   data: {
-  //     id: "74454",
-  //     name: "Domino's",
-  //     cloudinaryImageId: "bz9zkh2aqywjhpankb07",
-  //     cuisines: ["Pizzas"],
-  //     tags: [],
-  //     costForTwo: 40000,
-  //     deliveryTime: 45,
-  //     avgRating : 3.0,
-      
-
-  //   },
-  // },
-  // {
-  //   data: {
-  //     id: "74455",
-  //     name: "Domi",
-  //     cloudinaryImageId: "bz9zkh2aqywjhpankb07",
-  //     cuisines: ["Pizzas"],
-  //     tags: [],
-  //     costForTwo: 40000,
-  //     deliveryTime: 45,
-  //     avgRating : 4.5,
-
-  //   },
-  // },
-  // ]; 
-
+  const fetchData = async () => {
+    const data = await fetch('https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING');
+    const json =  await data.json();
+    console.log("apiData",json); 
+    setListOfRes(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+  }; 
+  console.log("resList", resList); 
 
     return (
       <div className="body">
@@ -65,7 +33,7 @@ const Body = () => {
           {/* since resList is an arrya  */}
   
           {listOfRes.map((restraunt) => (
-            <RestrauntCard key={restraunt.data.id} resData={restraunt}/>
+            <RestrauntCard key={restraunt.info.id} resList={restraunt}/>
           ))}
   
   
