@@ -90,3 +90,11 @@ body {
   height: 300px;
   background-color: #F0F0F0;
 }
+
+.filter{
+  display: flex;
+}
+
+.filter-btn{
+  margin: 10px;
+}
