@@ -3,6 +3,8 @@ import Shimmer from "./Shimmer";
 
 import { useState, useEffect } from "react";
 
+import { Link } from "react-router-dom";
+
 const Body = () => {
 
   const [listOfRes, setListOfRes] = useState([]);
@@ -38,11 +40,11 @@ const Body = () => {
             onChange={(e) => { setSearchText(e.target.value) }}
           ></input>
           <button
-          //filter logic 
-          onClick={() => {
-            const filteredRest = listOfRes.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())); 
-            setFilteredRest(filteredRest); 
-          }}
+            //filter logic 
+            onClick={() => {
+              const filteredRest = listOfRes.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
+              setFilteredRest(filteredRest);
+            }}
           >Search</button>
         </div>
         <button
@@ -57,7 +59,7 @@ const Body = () => {
         {/* since resList is an arrya  */}
 
         {filteredRest.map((restraunt) => (
-          <RestrauntCard key={restraunt.info.id} resList={restraunt} />
+          <Link to={"/restaurant/" + restraunt.info.id} ><RestrauntCard resList={restraunt} /></Link>
         ))}
 
 
