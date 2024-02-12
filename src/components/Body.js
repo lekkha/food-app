@@ -59,7 +59,10 @@ const Body = () => {
         {/* since resList is an arrya  */}
 
         {filteredRest.map((restraunt) => (
-          <RestrauntCard key={restraunt.info.id} resList={restraunt} />
+          <Link key={restraunt.info.id} to={"/restaurant/" + restraunt.info.id}>
+            <RestrauntCard resList={restraunt} />
+          </Link>
+
         ))}
 
 
