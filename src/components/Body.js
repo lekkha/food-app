@@ -19,8 +19,8 @@ const Body = () => {
     const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.65420&lng=77.23730&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
     const json = await data.json();
     console.log("apiData", json);
-    setListOfRes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRest(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setListOfRes(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRest(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
   // console.log("resList", resList); 
 
@@ -59,7 +59,7 @@ const Body = () => {
         {/* since resList is an arrya  */}
 
         {filteredRest.map((restraunt) => (
-          <Link to={"/restaurant/" + restraunt.info.id} ><RestrauntCard resList={restraunt} /></Link>
+          <RestrauntCard key={restraunt.info.id} resList={restraunt} />
         ))}
 
 
