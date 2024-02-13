@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 // import { MENU_API } from "../utils/constants";
 // import { generateProxyUrl } from "../utils/constants";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestrauntCategory from "./RestaurantCategory";
 
 
 const RestrauntMenu = () => {
@@ -31,30 +32,32 @@ const RestrauntMenu = () => {
     const { name, cuisines, costForTwoMessage } = resInfo?.cards[0]?.card?.card?.info;
     // const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
     const menu = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.find(x => x.card.card.title === "Recommended")
-    console.log(menu)
-    // console.log(itemCards)
+    // console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
+
+    const categories = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+        (c) =>
+            c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+
+    console.log(categories);
+
 
     return (
-        <div className="Menu">
-            <h2>{name}</h2>
-            <h4>{cuisines.join(", ")}</h4>
-            <h4>{costForTwoMessage}</h4>
-            <ul>
+        <div className="Menu text-center">
+            <h2 className="font-bold my-2 text-2xl">{name}</h2>
+            <p className="font-bold text-lg">{cuisines.join(", ")} - {costForTwoMessage}</p>
+
+            {/* categories accordian  */}
+            {categories.map((category) => (<RestrauntCategory data={category?.card?.card} />))}
+
+
+            {/* <ul>
                 {menu?.card.card.itemCards?.map((menuItem) => (
                     <li key={menuItem?.card?.info?.id}>{menuItem?.card?.info.name}</li>
                 ))}
-            </ul>
-            {/* <ul>
-                {itemCards?.map(item =>
-                    <li key={item?.card?.info?.id}>
-                        {item?.card?.info?.name} - {"Rs."}{item?.card?.info?.price / 100 || item?.card?.info?.defaultPrice / 100}
-                    </li>)}
-                
-            </ul> */}
+            </ul>*/}
         </div>
     );
 };
 
 export default RestrauntMenu;
-
-// at line 47 as a comment  <li>{itemCards[0].card.info.name}</li> 

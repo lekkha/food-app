@@ -43,11 +43,12 @@ const RestrauntCard = (props) => {
 // rest-card => rest-card-prmoted 
 //since it will be a function only 
 export const withPromotedLable = (RestrauntCard) => {
+
   return (props) => {
 
     return (
       <div>
-        <label>Veg</label>
+        <label className="absolute bg-green-700 p-1 m-4 text-white rounded-lg">Veg</label>
         <RestrauntCard {...props} />
       </div>
     );
