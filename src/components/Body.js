@@ -1,5 +1,7 @@
 import RestrauntCard from "./RestrauntCard";
 import Shimmer from "./Shimmer";
+import { generateProxyUrl } from "../utils/constants";
+import { RESTAURANTS_API } from "../utils/constants";
 
 import { useState, useEffect } from "react";
 
@@ -16,11 +18,13 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.65420&lng=77.23730&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
+    const resource = generateProxyUrl(RESTAURANTS_API)
+    const data = await fetch(resource);
+    // const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.65420&lng=77.23730&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
     const json = await data.json();
     console.log("apiData", json);
-    setListOfRes(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRest(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setListOfRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
   // console.log("resList", resList); 
 
