@@ -1,4 +1,4 @@
-import RestrauntCard from "./RestrauntCard";
+import RestrauntCard, { withPromotedLable } from "./RestrauntCard";
 import Shimmer from "./Shimmer";
 import { generateProxyUrl } from "../utils/constants";
 import { RESTAURANTS_API } from "../utils/constants";
@@ -12,6 +12,8 @@ const Body = () => {
   const [listOfRes, setListOfRes] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredRest, setFilteredRest] = useState([]);
+
+  const RestrauntCardPromoted = withPromotedLable(RestrauntCard);
 
   useEffect(() => {
     fetchData();
@@ -77,7 +79,9 @@ const Body = () => {
 
         {filteredRest.map((restraunt) => (
           <Link key={restraunt.info.id} to={"/restaurant/" + restraunt.info.id}>
-            <RestrauntCard resList={restraunt} />
+
+            {restraunt.info.veg ? <RestrauntCardPromoted resList={restraunt} /> : <RestrauntCard resList={restraunt} />}
+
           </Link>
 
         ))}

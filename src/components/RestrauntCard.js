@@ -39,4 +39,19 @@ const RestrauntCard = (props) => {
   );
 };
 
+//Higher order component 
+// rest-card => rest-card-prmoted 
+//since it will be a function only 
+export const withPromotedLable = (RestrauntCard) => {
+  return (props) => {
+
+    return (
+      <div>
+        <label>Veg</label>
+        <RestrauntCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestrauntCard; 
