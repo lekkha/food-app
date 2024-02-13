@@ -2,10 +2,10 @@ import RestrauntCard from "./RestrauntCard";
 import Shimmer from "./Shimmer";
 import { generateProxyUrl } from "../utils/constants";
 import { RESTAURANTS_API } from "../utils/constants";
-
 import { useState, useEffect } from "react";
-
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+
 
 const Body = () => {
 
@@ -32,6 +32,14 @@ const Body = () => {
   // if(listOfRes.length === 0){
   //   return <Shimmer />
   // }
+
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false)
+    return (
+      <h1>
+        Looks like you are offline please check your internet connection
+      </h1>
+    );
 
   return (listOfRes.length === 0) ? <Shimmer /> : (
     <div className="body">
