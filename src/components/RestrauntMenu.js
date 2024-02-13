@@ -48,7 +48,7 @@ const RestrauntMenu = () => {
             <p className="font-bold text-lg">{cuisines.join(", ")} - {costForTwoMessage}</p>
 
             {/* categories accordian  */}
-            {categories.map((category) => (<RestrauntCategory data={category?.card?.card} />))}
+            {categories.map((category) => (<RestrauntCategory key={category?.card?.card?.title} data={category?.card?.card} />))}
 
 
             {/* <ul>
