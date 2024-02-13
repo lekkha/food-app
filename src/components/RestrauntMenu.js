@@ -29,10 +29,10 @@ const RestrauntMenu = () => {
     if (resInfo === null) return <Shimmer />;
 
     const { name, cuisines, costForTwoMessage } = resInfo?.cards[0]?.card?.card?.info;
-
-
-    const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-    console.log(itemCards)
+    // const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+    const menu = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.find(x => x.card.card.title === "Recommended")
+    console.log(menu)
+    // console.log(itemCards)
 
     return (
         <div className="Menu">
@@ -40,14 +40,21 @@ const RestrauntMenu = () => {
             <h4>{cuisines.join(", ")}</h4>
             <h4>{costForTwoMessage}</h4>
             <ul>
+                {menu?.card.card.itemCards?.map((menuItem) => (
+                    <li key={menuItem?.card?.info?.id}>{menuItem?.card?.info.name}</li>
+                ))}
+            </ul>
+            {/* <ul>
                 {itemCards?.map(item =>
                     <li key={item?.card?.info?.id}>
                         {item?.card?.info?.name} - {"Rs."}{item?.card?.info?.price / 100 || item?.card?.info?.defaultPrice / 100}
                     </li>)}
-                {/* <li>{itemCards[0].card.info.name}</li> */}
-            </ul>
+                
+            </ul> */}
         </div>
     );
 };
 
-export default RestrauntMenu; 
+export default RestrauntMenu;
+
+// at line 47 as a comment  <li>{itemCards[0].card.info.name}</li> 
