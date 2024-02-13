@@ -14,7 +14,7 @@ const RestrauntCard = (props) => {
           + cloudinaryImageId}
       />
 
-      <div className="my-4 overflow-auto px-4">
+      <div className="my-4 px-4">
         <h3 className="font-bold pt-2" >{name}</h3>
         <div className="flex text-sm gap-3 mt-2 mb-1">
           <h4 className="text-sm">{avgRating} stars</h4>
@@ -22,9 +22,16 @@ const RestrauntCard = (props) => {
         </div>
         {/* JavaScript prop-> for since cusine is passed as an array for comma seperator between elems use .join(", ") */}
 
-        <h4 className="text-xs pb-4">{cuisines.join(", ")}</h4>
+        <div className="mt-2 mb-1">
+          <h4 className="text-sm">{costForTwo}</h4>
+        </div>
+
+        <div className="h-[30px] overflow-hidden">
+          <h4 className="text-xs">{cuisines.join(", ")}</h4>
+        </div>
+
         {/* <h4 className="text-sm">{avgRating} stars</h4> */}
-        <h4 className="text-sm">{costForTwo}</h4>
+
         {/* <h4 className="text-sm">{sla?.deliveryTime ?? '20'} minutes</h4> */}
 
       </div>
