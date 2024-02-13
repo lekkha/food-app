@@ -43,15 +43,16 @@ const Body = () => {
 
   return (listOfRes.length === 0) ? <Shimmer /> : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex">
+        <div className="search m-4 p-4">
           <input
             type="text"
-            className="search-box"
+            className="search-box border border-solid border-black"
             value={searchText}
             onChange={(e) => { setSearchText(e.target.value) }}
           ></input>
           <button
+            className="px-4 py-0.5 bg-green-500 m-4 rounded-lg"
             //filter logic 
             onClick={() => {
               const filteredRest = listOfRes.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
@@ -59,15 +60,19 @@ const Body = () => {
             }}
           >Search</button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const filteredList = listOfRes.filter((res) => res.info.avgRating > 4.0);
-            setListOfRes(filteredList);
-          }}
-        >Top Rated Restraunts</button>
+
+        <div className="search m-4 p-4 flex items-center">
+          <button
+            className="filter-btn px-4 py-1  bg-yellow-100 rounded-lg"
+            onClick={() => {
+              const filteredList = listOfRes.filter((res) => res.info.avgRating > 4.0);
+              setListOfRes(filteredList);
+            }}
+          >Top Rated Restraunts</button>
+        </div>
+
       </div>
-      <div className="res-contianer">
+      <div className="res-contianer flex flex-wrap mx-20">
         {/* since resList is an arrya  */}
 
         {filteredRest.map((restraunt) => (
