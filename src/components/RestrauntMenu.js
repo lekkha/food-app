@@ -38,7 +38,8 @@ const RestrauntMenu = () => {
                 key={category?.card?.card?.title}
                 data={category?.card?.card}
                 showItems = {index === showIndex ? true : false} //set showitem to true if index of card = show index 
-                setShowIndex = {() => setShowIndex(index)}     //passed as function so that child can change value on being clicked 
+                setShowIndex = {(newIndex) => setShowIndex(newIndex)}     //passed as function so that child can change value on being clicked 
+                index = {index}
             />))}
 
         </div>

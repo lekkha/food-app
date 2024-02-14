@@ -1,11 +1,13 @@
 
 import ItemList from "./ItemList";
 
-const RestrauntCategory = ({ data, showItems, setShowIndex }) => {
+const RestrauntCategory = ({ data, showItems, setShowIndex, index }) => {
     // console.log(data);
 
     const handleClick = () => {
-        setShowIndex();
+        //for toggling 
+        if (showItems) setShowIndex(null);
+        else setShowIndex(index);
     }
 
     return (
