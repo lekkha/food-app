@@ -10,6 +10,7 @@ import Contact from './components/Contact';
 import Error from './components/Error';
 import Body from './components/Body';
 import RestrauntMenu from './components/RestrauntMenu';
+import Cart from './components/Cart';
 
 
 
@@ -33,6 +34,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/restaurant/:resId",
                 element: <RestrauntMenu />
+            },
+            {
+                path: "/cart",
+                element: <Cart />
             },
         ],
         errorElement: <Error />,
