@@ -42,3 +42,26 @@ it("should search res card list for pizza text input", async () => {
     expect(cardsAfterSearch.length).toBe(4);
 
 });
+
+it("should filter top rated restaurants", async () => {
+    jest.spyOn(global, "fetch").mockImplementation(() =>
+        Promise.resolve({
+            json: () => Promise.resolve(MOCK_DATA)
+        })
+    );
+
+    await act(async () => {
+        render(
+            <BrowserRouter>
+                <Body />
+            </BrowserRouter>
+        )
+    })
+
+    const topRatedButton = screen.getByRole("button", { name: "Top Rated Restaurants" })
+    fireEvent.click(topRatedButton);
+
+    const cardsAfterFilter = screen.getAllByTestId("resCard")
+    expect(cardsAfterFilter.length).toBe(2)
+
+}); 

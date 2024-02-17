@@ -24,11 +24,11 @@ const Body = () => {
     const data = await fetch(resource);
     // const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.65420&lng=77.23730&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
     const json = await data.json();
-    console.log("apiData", json);
+    // console.log("apiData", json);
     setListOfRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setFilteredRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
-  console.log("resList", listOfRes);
+  // console.log("resList", listOfRes);
 
 
   const onlineStatus = useOnlineStatus();
@@ -64,10 +64,11 @@ const Body = () => {
           <button
             className="filter-btn px-4 py-1  bg-yellow-100 rounded-lg"
             onClick={() => {
-              const filteredList = listOfRes.filter((res) => res.info.avgRating > 4.0);
-              setListOfRes(filteredList);
+              const filteredList = listOfRes.filter((res) => res?.info?.avgRating > 4.5);
+              console.log(filteredList)
+              setFilteredRest(filteredList);
             }}
-          >Top Rated Restraunts</button>
+          >Top Rated Restaurants</button>
         </div>
 
       </div>
