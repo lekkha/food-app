@@ -28,7 +28,7 @@ const Body = () => {
     setListOfRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setFilteredRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
-  // console.log("resList", resList); 
+  console.log("resList", listOfRes);
 
 
   const onlineStatus = useOnlineStatus();

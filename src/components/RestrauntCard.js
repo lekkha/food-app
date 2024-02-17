@@ -2,6 +2,7 @@ import { CDN_URL } from '../utils/constants';
 
 const RestrauntCard = (props) => {
   const { resList } = props;
+  console.log(resList)
 
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } = resList?.info;
   return (
