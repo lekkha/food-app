@@ -33,7 +33,7 @@ const Header = () => {
             onClick={() => loginbtn === "Login" ? setLoginbtn("Logout") : setLoginbtn("Login")}
           >{loginbtn}</button>
 
-          <button className="mx-2 font-bold">{loggedInUser}</button>
+          <li className="mx-2 font-bold">{loggedInUser}</li>
         </ul>
       </div>
     </div>

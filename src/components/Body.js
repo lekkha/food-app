@@ -30,10 +30,6 @@ const Body = () => {
   };
   // console.log("resList", resList); 
 
-  //conditional rendering 
-  // if(listOfRes.length === 0){
-  //   return <Shimmer />
-  // }
 
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false)
