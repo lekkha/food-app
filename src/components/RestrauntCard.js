@@ -6,7 +6,7 @@ const RestrauntCard = (props) => {
 
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } = resList?.info;
   return (
-    <div className="res-card m-4 p-0 w-[200px] bg-sky-50 flex flex-col h-[310px] hover:scale-95">
+    <div data-testid="resCard" className="res-card m-4 p-0 w-[200px] bg-sky-50 flex flex-col h-[310px] hover:scale-95">
       <img
         className="rounded-xl h-36 object-cover"
         alt="res-logo"
