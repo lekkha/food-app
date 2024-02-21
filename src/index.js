@@ -16,27 +16,27 @@ import Cart from './components/Cart';
 
 const appRouter = createBrowserRouter([
     {
-        path: "/food-app",
+        path: "/",
         element: <App />,
         children: [
             {
-                path: "/food-app",
+                path: "/",
                 element: <Body />,
             },
             {
-                path: "/food-app/about",
+                path: "/about",
                 element: <About />,
             },
             {
-                path: "/food-app/contact",
+                path: "/contact",
                 element: <Contact />,
             },
             {
-                path: "/food-app/restaurant/:resId",
+                path: "/restaurant/:resId",
                 element: <RestrauntMenu />
             },
             {
-                path: "/food-app/cart",
+                path: "/cart",
                 element: <Cart />
             },
         ],
