@@ -42,11 +42,11 @@ const Body = () => {
   return (listOfRes.length === 0) ? <Shimmer /> : (
     <div className="body">
       <div className="filter flex">
-        <div className="search m-4 p-4">
+        <div className="mx-20 m-4 p-4">
           <input
             type="text"
             data-testid="searchInput"
-            className="search-box border border-solid border-black"
+            className="border border-solid border-black"
             value={searchText}
             onChange={(e) => { setSearchText(e.target.value) }}
           ></input>
@@ -60,9 +60,9 @@ const Body = () => {
           >Search</button>
         </div>
 
-        <div className="search m-4 p-4 flex items-center">
+        <div className="m-4 p-4 flex items-center">
           <button
-            className="filter-btn px-4 py-1  bg-yellow-100 rounded-lg"
+            className="px-4 py-1  bg-yellow-100 rounded-lg"
             onClick={() => {
               const filteredList = listOfRes.filter((res) => res?.info?.avgRating > 4.5);
               console.log(filteredList)
