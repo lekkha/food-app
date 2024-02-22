@@ -40,18 +40,18 @@ const Body = () => {
     );
 
   return (listOfRes.length === 0) ? <Shimmer /> : (
-    <div className="body">
-      <div className="filter flex">
-        <div className="mx-20 m-4 p-4">
+    <div className="flex flex-col items-center w-full">
+      <div className="w-full">
+        <div className="mx-24 w-11/12">
           <input
             type="text"
             data-testid="searchInput"
-            className="border border-solid border-black"
+            className="mt-8 border border-1 border-slate-400 w-10/12"
             value={searchText}
             onChange={(e) => { setSearchText(e.target.value) }}
           ></input>
           <button
-            className="px-4 py-0.5 bg-green-500 m-4 rounded-lg"
+            className="px-2 py-0.5 bg-slate-200 m-2"
             //filter logic 
             onClick={() => {
               const filteredRest = listOfRes.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
@@ -60,9 +60,9 @@ const Body = () => {
           >Search</button>
         </div>
 
-        <div className="m-4 p-4 flex items-center">
+        <div className="flex items-center">
           <button
-            className="px-4 py-1  bg-yellow-100 rounded-lg"
+            className="mt-1 mb-8 ml-24 rounded-lg hover:bg-[#4cc850fd] transition-all duration-300 no-underline flex bg-green-100 p-1"
             onClick={() => {
               const filteredList = listOfRes.filter((res) => res?.info?.avgRating > 4.5);
               console.log(filteredList)
@@ -72,7 +72,7 @@ const Body = () => {
         </div>
 
       </div>
-      <div className="res-contianer flex flex-wrap mx-20">
+      <div className="flex flex-wrap mx-20">
         {/* since resList is an arrya  */}
 
         {filteredRest.map((restraunt) => (
@@ -84,13 +84,6 @@ const Body = () => {
 
         ))}
 
-
-        {/* <RestrauntCard resData={resList[0]} />
-          <RestrauntCard resData={resList[1]} />
-          <RestrauntCard resData={resList[2]} />
-          <RestrauntCard resData={resList[3]} />
-          <RestrauntCard resData={resList[4]} />
-          <RestrauntCard resData={resList[5]} /> */}
       </div>
     </div>
   );

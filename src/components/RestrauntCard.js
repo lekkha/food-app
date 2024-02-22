@@ -6,9 +6,9 @@ const RestrauntCard = (props) => {
 
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } = resList?.info;
   return (
-    <div data-testid="resCard" className="res-card m-4 p-0 w-[200px] bg-sky-50 flex flex-col h-[310px] hover:scale-95">
+    <div data-testid="resCard" className="res-card m-4 p-0 w-[350px] flex flex-col h-[350px] hover:scale-95 ml-20 shadow-md">
       <img
-        className="rounded-xl h-36 object-cover"
+        className="rounded-xl h-40 object-cover"
         alt="res-logo"
         // since we are concatination -> could be done in js only thus {}
         src={CDN_URL
@@ -49,7 +49,7 @@ export const withPromotedLable = (RestrauntCard) => {
 
     return (
       <div>
-        <label className="absolute bg-green-700 p-1 m-4 text-white rounded-lg">Veg</label>
+        <label className="absolute bg-green-700 p-1 m-4 ml-32 text-white rounded-lg">Veg</label>
         <RestrauntCard {...props} />
       </div>
     );
